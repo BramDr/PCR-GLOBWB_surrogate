@@ -4,11 +4,11 @@ Repository related to the deep-learning PCR-GLOBWB surrogate (DL-GLOBWB). Contai
 Note that this repository is under active development and specifically designed for the deep-learning PCR-GLOBWB surrogate. Please contact Bram Droppers (b.droppers@uu.nl) for any questions.
 
 ## Folder structure
-### run
+### surrogate/run
 The run folder is the main folder. This folder contains all scripts that **prepare** and **setup** the surrogate input and output data (from PCR-GLOBWB model simulations), intitializes the **transform**ers, **tune**s the hyperparameters, and **train**s the surrogate model. Additionally some **evaluate**ion scripts are provided for plotting.
 
-### nn
+### surrogate/nn
 The nn folder contains classes related tot the neural network, such as the surrogate-model, **functional** transformer and **metric** classes.
 
-### utils
+### surrogate/utils
 The utils folder contains utilities for **data** loading, including the the dataset and prefetcher classes, **train**ing, including the trainer and callback classes and **plot**ting.
