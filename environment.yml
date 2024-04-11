@@ -1,0 +1,31 @@
+name: PCR-GLOBWB_surrogate
+channels:
+  # - defaults
+  - conda-forge
+  # - pytorch
+  # - nvidia
+  - plotly
+dependencies:
+  - python=3.11
+  - pip
+  - netcdf4
+  - numpy
+  - pandas
+  - plotnine=0.12
+  - scikit-learn
+  - numba
+  - xarray
+  - dask
+  - ipykernel
+  - optuna
+  - pcraster
+  # USE: conda install pytorch torchvision torchaudio pytorch-cuda=11.8 -c pytorch -c nvidia
+  # - pytorch 
+  # - torchvision
+  # - torchaudio
+  # - pytorch-cuda=11.8
+  - plotly
+  - patchworklib
+  - cartopy
+  - pip:
+    - hydroeval
