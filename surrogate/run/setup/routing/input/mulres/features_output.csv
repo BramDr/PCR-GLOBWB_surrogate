@@ -1,0 +1,5 @@
+source,name,feature,section,option,aggregation
+output,discharge_flux,discharge_flux,,discharge,
+generated,discharge_mean,discharge_mean,,,
+output,surface_water_storage_mean,surface_water_storage_mean,,surfaceWaterStorage,
+generated,surface_water_storage_flux,surface_water_storage_flux,,,
