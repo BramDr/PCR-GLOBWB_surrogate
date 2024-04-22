@@ -1,0 +1,2 @@
+# PCR-GLOBWB_surrogate surrogate utils
+The utils folder contains utilities for **data** loading, including the the dataset and prefetcher classes, **train**ing, including the trainer and callback classes and **plot**ting.

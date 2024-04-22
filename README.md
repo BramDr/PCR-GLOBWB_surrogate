@@ -5,10 +5,13 @@ Note that this repository is under active development and specifically designed 
 
 ## Folder structure
 ### surrogate/run
-The run folder is the main folder. This folder contains all scripts that **prepare** and **setup** the surrogate input and output data (from PCR-GLOBWB model simulations), intitializes the **transform**ers, **tune**s the hyperparameters, and **train**s the surrogate model. Additionally some **evaluate**ion scripts are provided for plotting.
+The run folder is the main folder. This folder contains all scripts that **prepare** and **setup** the surrogate input and output data (from PCR-GLOBWB model simulations), intitializes the **transform**ers, **tune**s the hyperparameters, and **train**s the surrogate model.
 
 ### surrogate/nn
 The nn folder contains classes related tot the neural network, such as the surrogate-model, **functional** transformer and **metric** classes.
 
 ### surrogate/utils
 The utils folder contains utilities for **data** loading, including the the dataset and prefetcher classes, **train**ing, including the trainer and callback classes and **plot**ting.
+
+### surrogate/example
+The example folder is an example based on the run folder. This folder contains some example data (only 30 arc-minutes and only 1 year) that has been prepared and setup. This folder includes scripts that intitializes the **transform**ers and **train**s the surrogate model. Additionally some **evaluate**ion scripts are provided for plotting.
