@@ -11,6 +11,7 @@ dependencies:
   - netcdf4
   - numpy
   - pandas
+  - pyarrow
   - plotnine=0.12
   - scikit-learn
   - numba
@@ -27,5 +28,6 @@ dependencies:
   - plotly
   - patchworklib
   - cartopy
+  - nbformat
   - pip:
     - hydroeval

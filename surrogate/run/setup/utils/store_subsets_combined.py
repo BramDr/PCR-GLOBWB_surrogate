@@ -17,15 +17,12 @@ def store_subsets_combined(names: Sequence[str],
                            lons_subsets: Sequence[np.ndarray],
                            lats_subsets: Sequence[np.ndarray],
                            s_mapping_subsets: Sequence[np.ndarray],
-                           arrays_additional: Optional[dict[str, np.ndarray]] = None,
                            origional_lons_subsets: Optional[Sequence[Optional[np.ndarray]]] = None,
                            origional_lats_subsets: Optional[Sequence[Optional[np.ndarray]]] = None,
                            dates_subsets: Optional[Sequence[Optional[np.ndarray]]] = None,
                            origional_dates_subsets: Optional[Sequence[Optional[np.ndarray]]] = None,
                            d_mapping_subsets: Optional[Sequence[Optional[np.ndarray]]] = None) -> None:
     
-    if arrays_additional is None:
-        arrays_additional = {}
     if origional_lons_subsets is None:
         origional_lons_subsets_sel = [None for _ in range(len(process_flag_subsets))]
     if origional_lats_subsets is None:
@@ -113,7 +110,7 @@ def store_subsets_combined(names: Sequence[str],
 
         array_out = array_out_subsets_sel[0]
         array_out.parent.mkdir(parents=True, exist_ok=True)
-        np.savez_compressed(array_out, **arrays_dict, **arrays_additional)
+        np.savez_compressed(array_out, **arrays_dict)
         
         meta_out = meta_out_subsets_sel[0]
         meta_out.parent.mkdir(parents=True, exist_ok=True)
