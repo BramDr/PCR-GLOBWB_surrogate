@@ -21,8 +21,8 @@ params = {"lake": {"sample_size": 32,
                    "n_lstm": 1,
                    "n_in_linear": 1,
                    "n_out_linear": 1,
-                   "in_hidden_size": 126,
-                   "out_hidden_size": 126,
+                   "in_hidden_size": 256,
+                   "out_hidden_size": 256,
                    "dropout_rate": 0.2,
                    "learning_rate": 5e-5,
                    "transformer_type": "losg-1p0_standard"},
@@ -31,8 +31,8 @@ params = {"lake": {"sample_size": 32,
                         "n_lstm": 1,
                         "n_in_linear": 1,
                         "n_out_linear": 1,
-                        "in_hidden_size": 126,
-                        "out_hidden_size": 126,
+                        "in_hidden_size": 256,
+                        "out_hidden_size": 256,
                         "dropout_rate": 0.7,
                         "learning_rate": 1e-5,
                         "transformer_type": "log_standard"},
@@ -41,8 +41,8 @@ params = {"lake": {"sample_size": 32,
                     "n_lstm": 1,
                     "n_in_linear": 1,
                     "n_out_linear": 1,
-                    "in_hidden_size": 126,
-                    "out_hidden_size": 126,
+                    "in_hidden_size": 256,
+                    "out_hidden_size": 256,
                     "dropout_rate": 0.15,
                     "learning_rate": 5e-5,
                     "transformer_type": "log_standard"}}
@@ -80,13 +80,6 @@ for routing_type in routing_types:
     
     transformer_type_dir = pl.Path("{}/{}".format(transform_routing_dir, transformer_type))
     
-    performance_out = pl.Path("{}/performance.csv".format(out_routing_dir))
-    state_dict_out = pl.Path("{}/state_dict.pt".format(out_routing_dir))
-    meta_out = pl.Path("{}/model_meta.pkl".format(out_routing_dir))
-    if performance_out.exists() and state_dict_out.exists() and meta_out.exists():
-        print("Already exists")
-        continue
-    
     learning_rate_minimum = learning_rate * 1e-1
     learning_rate_maximum = learning_rate * 1e1
         
@@ -98,6 +91,13 @@ for routing_type in routing_types:
         print("\tSubsample: {}".format(subsample))
         
         out_subsample_dir = pl.Path("{}/{}".format(out_routing_dir, subsample))
+    
+        performance_out = pl.Path("{}/performance.csv".format(out_subsample_dir))
+        state_dict_out = pl.Path("{}/state_dict.pt".format(out_subsample_dir))
+        meta_out = pl.Path("{}/model_meta.pkl".format(out_subsample_dir))
+        if performance_out.exists() and state_dict_out.exists() and meta_out.exists():
+            print("Already exists")
+            continue
         
         trainer = train_objective(n_lstm=n_lstm,
                                     n_in_linear=n_in_linear,
