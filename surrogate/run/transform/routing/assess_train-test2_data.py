@@ -44,9 +44,9 @@ for resolution in resolutions:
             out_dataset_dir = pl.Path("{}/{}".format(out_routing_dir, dataset))
         
             skew_out = pl.Path("{}_skew.csv".format(out_dataset_dir))
-            # if skew_out.exists():
-            #     print("Already exists")
-            #     continue
+            if skew_out.exists():
+                print("Already exists")
+                continue
             
             features = np.unique([file.stem for file in setup_dataset_dir.rglob("*.npy") if file.is_file()])
             

@@ -22,7 +22,6 @@ class SurrogateModel(torch.nn.Module):
                  output_features: Optional[np.ndarray] = None,
                  input_transformers: Optional[dict[str, Optional[Transformer]]] = None,
                  output_transformers: Optional[dict[str, Optional[Transformer]]] = None,
-                 try_cuda: bool = False,
                  gpu: int = 0,
                  seed: int = 19920223) -> None:
         super().__init__()
@@ -91,9 +90,7 @@ class SurrogateModel(torch.nn.Module):
                                       num_layers = n_lstm,
                                       dropout = dropout_rate)
         
-        self.try_cuda = False            
-        if try_cuda and torch.cuda.is_available():
-            self.try_cuda = True
+        if gpu >= 0:
             self.to("cuda:{}".format(gpu))
     
     def forward(self,
@@ -134,7 +131,6 @@ class SurrogateModel(torch.nn.Module):
     @staticmethod
     def load(save_dir: pl.Path,
              dropout_rate: float = 0,
-             try_cuda: bool = True,
              gpu: int = 0,
              seed: int = 19920223) -> SurrogateModel:
     
@@ -169,7 +165,6 @@ class SurrogateModel(torch.nn.Module):
                             output_transformers=output_transformers,
                             seed=seed,
                             dropout_rate=dropout_rate,
-                            try_cuda=try_cuda,
                             gpu=gpu)
         model.load_state_dict(state_dict=state_dict)
         return model

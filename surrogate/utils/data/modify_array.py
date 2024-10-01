@@ -117,6 +117,9 @@ def modify_array(array: np.ndarray,
 
     array = array.astype(np.float32)
     
+    while len(array.shape) < 2:
+        array = np.expand_dims(a=array, axis=0)
+    
     while len(array.shape) < 3:
         array = np.expand_dims(a=array, axis=-1)
 

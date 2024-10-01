@@ -4,7 +4,7 @@ import pickle
 
 import numpy as np
 
-save_dir = pl.Path("./saves_sequence/predict")
+save_dir = pl.Path("./saves/predict")
 
 ### Input ###
 template_files = [file for file in save_dir.rglob("landsurface_runoff_flux.npz") if file.is_file()]
@@ -56,7 +56,7 @@ for template_file in template_files:
                 
                 sequence_means[sequence] = mean
                     
-            np.savez(mean_file, **sequence_means)
+            np.savez_compressed(mean_file, **sequence_means)
             del sequence_means
             shutil.copyfile(meta_file, mean_meta_file)
 
@@ -107,7 +107,7 @@ for template_file in template_files:
                 
                 sequence_means[sequence] = mean
                     
-            np.savez(mean_file, **sequence_means)
+            np.savez_compressed(mean_file, **sequence_means)
             del sequence_means
             shutil.copyfile(meta_file, mean_meta_file)
     
@@ -135,7 +135,7 @@ for template_file in template_files:
                 
                 sequence_fluxes[sequence] = flux
                     
-            np.savez(flux_file, **sequence_fluxes)
+            np.savez_compressed(flux_file, **sequence_fluxes)
             del sequence_fluxes
             shutil.copyfile(meta_file, flux_meta_file)
         

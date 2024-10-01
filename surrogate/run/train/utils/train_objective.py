@@ -110,7 +110,7 @@ def train_objective(n_lstm: int,
                            output_features=output_features,
                            input_transformers=train_batchset.x_transformers,
                            output_transformers=train_batchset.y_transformers,
-                           try_cuda=True,
+                           gpu=0,
                            seed=seed)
     model.train(mode=False)
     if verbose > 0:

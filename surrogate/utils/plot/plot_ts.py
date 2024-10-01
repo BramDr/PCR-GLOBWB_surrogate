@@ -33,20 +33,6 @@ def plot_ts(input_df: pd.DataFrame,
                     ylim_min = min
                 if max > ylim_max:
                     ylim_max = max
-        if plot_range:
-            min = np.quantile(input_df["min_range"], 0.02)
-            max = np.quantile(input_df["max_range"], 0.98)
-            if min < ylim_min:
-                ylim_min = min
-            if max > ylim_max:
-                ylim_max = max
-        if plot_mean:
-            min = np.quantile(input_df["mean"], 0.02)
-            max = np.quantile(input_df["mean"], 0.98)
-            if min < ylim_min:
-                ylim_min = min
-            if max > ylim_max:
-                ylim_max = max
         ylim = (ylim_min, ylim_max)
     
     plot = pn.ggplot(data=input_df,
